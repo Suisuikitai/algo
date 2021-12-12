@@ -7,6 +7,10 @@ int main(int argc, char const *argv[])
 	cin >> A >> B >> K;
 	int x = 0, y = 0;
 	x = (K * B + A) / (K + 1);
-	if (A > 0)
-		return 0;
+	y = B - x;
+	if (x >= 0 && y >= 0 && (K * B + A) % (K + 1) == 0)
+		cout << x << endl;
+	else
+		cout << -1 << endl;
+	return 0;
 }
