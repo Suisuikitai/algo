@@ -2,14 +2,17 @@
 #include <regex>
 using namespace std;
 
+int solve(int a1, int a2, int N)
+{
+	if (N - 1 == 0)
+		return a1 + a2;
+	return solve(a1 + a2, a1, N - 1);
+}
+
 int main(int argc, char const *argv[])
 {
 	int N;
 	cin >> N;
-	vector<int> A(N + 1);
-	A[0] = 1, A[1] = 1;
-	for (int i = 2; i < N + 1; i++)
-		A[i] = A[i - 1] + A[i - 2];
-	cout << A[N] << endl;
+	cout << solve(1, 0, N) << endl;
 	return 0;
 }
