@@ -15,9 +15,9 @@ int main(int argc, char const *argv[])
 	{
 		for (int j = 0; j < M; j++)
 		{
-			if (i - D[j] >= 0 && dp[i - D[j]])
+			if (i - D[j] >= 0 && dp[i - D[j]] == true)
 			{
-				dp[i] = dp[i - D[j]];
+				dp[i] = true;
 				break;
 			}
 		}
