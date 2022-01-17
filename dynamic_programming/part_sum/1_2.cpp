@@ -14,10 +14,12 @@ int main(int argc, char const *argv[])
 	{
 		for (int j = 0; j < M; j++)
 		{
-			if (dp[i][j])
-				dp[i + 1][j] = true;
-			if (j - A[i] >= 0 && dp[i][j - A[i]])
-				dp[i + 1][j] = true;
+			//移動もとのマスに到達可能か
+			if (!dp[i][j])
+				continue;
+			dp[i + 1][j] = true;
+			if (j + A[i] < M)
+				dp[i + 1][j + A[i]] = true;
 		}
 	}
 	int ans = 0;
