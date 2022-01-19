@@ -18,6 +18,8 @@ int main(int argc, char const *argv[])
 			if (j + W[i] <= M)
 				dp[i + 1][j + W[i]] = max(dp[i + 1][j + W[i]], dp[i][j] + V[i]);
 		}
-	cout << dp[N][M] << endl;
+	int res = 0;
+	for(int j = 0; j <= M; j++)res = max(res, dp[N][j]);
+	cout << res << endl;
 	return 0;
 }
