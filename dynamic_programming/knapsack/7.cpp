@@ -21,13 +21,12 @@ int main(int argc, char const *argv[])
 			{
 				if (dp[i][j] != INF)
 					dp[i + 1][j + A[i]] = min(dp[i + 1][j + A[i]], 1);
-
 				if (dp[i + 1][j] < B[i])
 					dp[i + 1][j + A[i]] = min(dp[i + 1][j + A[i]], dp[i + 1][j] + 1);
 			}
 		}
 	}
-	if (dp[N][M] < INF)
+	if (dp[N][M] != INF)
 		cout << "Yes" << endl;
 	else
 		cout << "No" << endl;
