@@ -15,6 +15,19 @@ int main(int argc, char const *argv[])
 	//	つまり、この問題で求めるべき答えはdp[T+1]に格納する値
 	//この思考の手間を減らすためにT+2にしているのではなく110にしているってこと？
 	//　それともメモリの取り方の話？
-	vector<int> dp(T + 2);
+	vector<int> dp(T + 2, 0);
+	dp[1] = max(dp[1], dp[0] + g[0][1]);
+	dp[2] = max(dp[2], dp[1] + g[0][1]);
+	dp[2] = max(dp[2], dp[1] + g[0][2]);
+	dp[2] = max(dp[2], dp[1] + g[1][2]);
+	dp[2] = max(dp[2], dp[1] + g[1][2]);
+	for (int t = 1; t < T + 2; t++)
+	{
+		for (int i = 0; i < t; i++)
+		{
+			for (int j = i + 1; j < t; j++)
+				dp[t] = max(dp[t], dp[i] + g[i][j - 1]);
+		}
+	}
 	return 0;
 }
