@@ -21,13 +21,21 @@ int main(int argc, char const *argv[])
 	dp[2] = max(dp[2], dp[1] + g[0][2]);
 	dp[2] = max(dp[2], dp[1] + g[1][2]);
 	dp[2] = max(dp[2], dp[1] + g[1][2]);
+	//求めるdpのインデックス
+	// 1~T+1
+	// i番目はi-1を選ばなかった場合の最大値
 	for (int t = 1; t < T + 2; t++)
 	{
+		// iは漸化式で出てくるgの第一配列のインデックス
+		// 区間の左側
 		for (int i = 0; i < t; i++)
 		{
+			// jは漸化式で出てくるgの第二配列のインデックス
+			// 区間の右側
 			for (int j = i + 1; j < t; j++)
 				dp[t] = max(dp[t], dp[i] + g[i][j - 1]);
 		}
 	}
+	cout << dp[T + 1] << endl;
 	return 0;
 }
