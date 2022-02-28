@@ -1,12 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void out(int N, int A)
+void out(vector<int> a, int n)
 {
-	for (int i = 0; i < N; i++)
-	{
-		cout <<
-	}
+	for (int i = 0; i < n; i++)
+		cout << a[i] << ' ';
+	cout << endl;
 }
 
 int main(int argc, char const *argv[])
@@ -16,16 +15,17 @@ int main(int argc, char const *argv[])
 	vector<int> A(N);
 	for (int &a : A)
 		cin >> a;
-	for (int k = 0; k < N; k++)
+	for (int k = 0; k < N - 1; k++)
 	{
-		int m = A[k];
-		int v = 0;
-		for (int i = k + 1; i < N; i++)
+		int xm = k;
+		for (int l = k + 1; l < N; l++)
+			if (A[l] < A[xm])
+				xm = l;
+		if (xm != k)
 		{
-			if (A[i] < m)
-				v = i;
+			swap(A[xm], A[k]);
 		}
-		swap(A[k], A[v]);
+		out(A, N);
 	}
 	return 0;
 }
