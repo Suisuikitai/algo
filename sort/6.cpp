@@ -5,11 +5,10 @@ void mergesort(vector<int> &a, int left, int right)
 {
 	if (right - left < 2)
 		return;
-	int mid = (right - left) / 2;
+	int mid = left + (right - left) / 2;
 	mergesort(a, left, mid);
 	mergesort(a, mid, right);
 
-	//ここの工夫まじでうまい
 	vector<int> buf;
 	for (int i = left; i < mid; i++)
 		buf.push_back(a[i]);
@@ -35,5 +34,8 @@ int main(int argc, char const *argv[])
 	for (int &a : A)
 		cin >> a;
 	mergesort(A, 0, N);
+	for (int &a : A)
+		cout << a << ' ';
+	cout << endl;
 	return 0;
 }
