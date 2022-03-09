@@ -8,27 +8,27 @@ int main(int argc, char const *argv[])
 	vector<int> A(N);
 	for (int &a : A)
 		cin >> a;
+
 	int x = N / 2;
 	while (--x >= 0)
 	{
-		for (int k = x; k * 2 + 1 < N;)
+		for (int k = x; 2 * k + 1 < N;)
 		{
 			int max = k;
 			int maxa = A[k];
-			if (maxa < A[k * 2 + 1])
+			if (maxa < A[2 * k + 1])
 			{
-				maxa = A[k * 2 + 1];
-				max = k * 2 + 1;
-				swap(A[k], A[max]);
+				maxa = A[2 * k + 1];
+				max = 2 * k + 1;
 			}
-			if (k * 2 + 2 < N && maxa < A[k * 2 + 2])
+			if (2 * k + 2 < N && maxa < A[2 * k + 2])
 			{
-				maxa = A[k * 2 + 2];
-				max = k * 2 + 2;
-				swap(A[k], A[max]);
+				maxa = A[2 * k + 2];
+				max = 2 * k + 2;
 			}
 			if (k == max)
 				break;
+			swap(A[k], A[max]);
 			k = max;
 		}
 	}
