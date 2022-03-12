@@ -1,13 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
-
-int main(int argc, char const *argv[])
+void heap_sort(vector<int> &A, int N)
 {
-	int N;
-	cin >> N;
-	vector<int> A(N);
-	for (int &a : A)
-		cin >> a;
 	int x = N / 2;
 	while (--x >= 0)
 	{
@@ -19,19 +13,28 @@ int main(int argc, char const *argv[])
 			{
 				maxa = A[k * 2 + 1];
 				max = k * 2 + 1;
-				swap(A[k], A[max]);
 			}
 			if (k * 2 + 2 < N && maxa < A[k * 2 + 2])
 			{
 				maxa = A[k * 2 + 2];
 				max = k * 2 + 2;
-				swap(A[k], A[max]);
 			}
 			if (k == max)
 				break;
+			swap(A[k], A[max]);
 			k = max;
 		}
 	}
+}
+
+int main(int argc, char const *argv[])
+{
+	int N;
+	cin >> N;
+	vector<int> A(N);
+	for (int &a : A)
+		cin >> a;
+	heap_sort(A, N);
 	for (int &a : A)
 		cout << a << ' ';
 	cout << endl;
