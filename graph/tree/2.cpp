@@ -1,9 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
-void rec(int v, vector<vector<int>> P)
+void rec(int v, vector<vector<int>> &P)
 {
 	cout << v << ' ';
-	for (int i : P[v])
+	for (int &i : P[v])
 		rec(i, P);
 }
 
