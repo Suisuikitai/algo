@@ -6,17 +6,19 @@ int main(int argc, char const *argv[])
 	int N, M;
 	cin >> N >> M;
 	vector<vector<int>> G(N);
+	vector<int> deg(N, 0);
 	for (int i = 0; i < M; i++)
 	{
 		int f, s;
 		cin >> f >> s;
-		G[s].push_back(f);
+		G[f].push_back(s);
+		++deg[s];
 	}
 	queue<int> que;
 	int num = 0;
 	for (int i = 0; i < N; i++)
 	{
-		if (G[i].size() == 0)
+		if (deg[i] == 0)
 		{
 			que.push(i);
 			num++;
@@ -29,7 +31,8 @@ int main(int argc, char const *argv[])
 
 		for (auto v : G[t])
 		{
-			if (G[v].size() == 0)
+			--deg[v];
+			if (deg[v] == 0)
 			{
 				que.push(v);
 				num++;
