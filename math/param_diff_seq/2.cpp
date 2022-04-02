@@ -3,9 +3,9 @@ using namespace std;
 
 int main(int argc, char const *argv[])
 {
-	int N, X;
-	cin >> N >> X;
-	for (int i = 0; i < N + 1; i++)
-		cout << i * 500 + X << endl;
+	int A, B, X, Y;
+	cin >> A >> B >> X >> Y;
+	int d = (Y - X) / (B - A);
+	cout << X - d * A << endl;
 	return 0;
 }
